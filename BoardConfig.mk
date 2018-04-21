@@ -34,7 +34,7 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CONFIG := twrp_defconfig
 TARGET_KERNEL_DEVICE_DEFCONFIG := device_lge_rs988
 
-TARGET_PREBUILT_KERNEL := $(DEVICE_TREE)/Image.gz-dtb
+TARGET_PREBUILT_KERNEL := $(DEVICE_TREE)/kernel
 
 # Boot image
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff androidboot.hardware=h1 androidboot.bootdevice=624000.ufshc androidboot.selinux=permissive
@@ -47,6 +47,7 @@ BOARD_BOOTIMAGE_PARTITION_SIZE     := 0x002800000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x002880000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 0x15D800000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0xD0F800000
+BOARD_CACHEIMAGE_PARTITION_SIZE    := 0x04D000000
 BOARD_FLASH_BLOCK_SIZE := 0x40000
 
 # File systems
