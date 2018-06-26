@@ -69,7 +69,7 @@ TW_SCREEN_BLANK_ON_BOOT := true
 TW_INCLUDE_NTFS_3G := true
 
 # exFAT drivers included in the kernel
-TW_NO_EXFAT_FUSE := true
+TW_NO_EXFAT_FUSE := false
 
 # No love for the wicked (device ships with M)
 TW_EXCLUDE_SUPERSU := true
