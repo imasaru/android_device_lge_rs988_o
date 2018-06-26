@@ -3,25 +3,30 @@ on fs
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
 # encryption support
-on init
+on property:ro.crypto.state=encrypted
+        chmod 0750 /qseecom.sh
+        start qseecom
+
+service qseecom /sbin/ash /qseecom.sh
+	disabled
+	user root
+	group root
+	seclabel u:r:recovery:s0
+
+service vendor /sbin/ash /vendor.sh
+	oneshot
+	disabled
+	user root
+	group root
+	seclabel u:r:recovery:s0
+
+on fs
     chmod 0660 /dev/qseecom
     chown system drmrpc /dev/qseecom
     chmod 0664 /dev/ion
     chown system system /dev/ion
-
-on property:ro.crypto.state=encrypted
-    start sbinqseecomd
-
-# separate copy needed to use /sbin/linker64 instead of /system/bin/linker64
-service sbinqseecomd /sbin/qseecomd
-    oneshot
-    disabled
-    user root
-    group root
-    seclabel u:r:recovery:s0
-
-on property:ro.crypto.fs_crypto_blkdev=/dev/block/dm-0
-    stop sbinqseecomd
+        chmod 0750 /vendor.sh
+        start vendor
 
 on boot
     # save battery by switching to interactive once booted

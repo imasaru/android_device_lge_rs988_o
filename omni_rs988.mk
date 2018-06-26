@@ -30,3 +30,4 @@ PRODUCT_MODEL := LG-RS988
 PRODUCT_NAME := omni_rs988
 PRODUCT_BRAND := lge
 PRODUCT_MANUFACTURER := LGE
+PRODUCT_COPY_FILES += device/lge/$(PRODUCT_DEVICE)/recovery.fstab:recovery/root/etc/twrp.fstab
