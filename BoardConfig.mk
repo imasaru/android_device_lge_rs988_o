@@ -89,3 +89,8 @@ TW_EXTRA_LANGUAGES := true
 
 # Ignore LG's bootloader wipe commands
 TW_IGNORE_MISC_WIPE_DATA := true
+
+TW_DEVICE_VERSION := 1
+#TW_CRYPTO_SYSTEM_VOLD_DEBUG := true
+TARGET_RECOVERY_DEVICE_MODULES := zip kdzwriter strace
+#TARGET_CRYPTFS_HW_PATH := vendor/qcom/opensource/cryptfs_hw
