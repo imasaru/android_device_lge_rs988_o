@@ -70,6 +70,7 @@ TW_INCLUDE_NTFS_3G := true
 
 # No love for the wicked (device ships with M)
 TW_EXCLUDE_SUPERSU := true
+TW_EXTRA_LANGUAGES := true
 
 # Encryption support
 TARGET_HW_DISK_ENCRYPTION := true
