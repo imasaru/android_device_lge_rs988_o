@@ -67,9 +67,6 @@ TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 128
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INCLUDE_NTFS_3G := true
-
-# No love for the wicked (device ships with M)
-TW_EXCLUDE_SUPERSU := true
 TW_EXTRA_LANGUAGES := true
 
 # Encryption support
