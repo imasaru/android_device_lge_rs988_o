@@ -1,7 +1,8 @@
 #!/sbin/ash
 if [ `blkid /dev/block/bootdevice/by-name/vendor | grep -c ext4` -ge 1 ] ; then
-	echo '/vendor /dev/block/bootdevice/by-name/vendor	ext4	flags=backup;wipeingui'>>/etc/recovery.fstab
-	echo '/vendor_image /dev/block/bootdevice/by-name/vendor	emmc	flags=backup=0;flashimg'>>/etc/recovery.fstab
+	sed -i '5i\/vendor		ext4	/dev/block/bootdevice/by-name/vendor	flags=backup=1;wipeingui' /etc/recovery.fstab
+	sed -i '6i\/vendor_image	emmc	/dev/block/bootdevice/by-name/vendor	flags=backup=0;flashimg=1' /etc/recovery.fstab
+
 	if [ ! -d /vendor ]; then # if not a directory, it either doesnt exist or is a symlink
 		if [ -L /vendor ]; then
 			rm /vendor
