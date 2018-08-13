@@ -4,6 +4,7 @@ on boot
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
+
     chmod 0750 /vendor.sh
     start vendor
 
@@ -18,24 +19,25 @@ on fs
     chown system system /dev/ion
 
 on property:ro.crypto.state=encrypted
-	chmod 0750 /sbin/qseecom.sh
-	start qseecom
+    chmod 0750 /sbin/qseecom.sh
+    start qseecom
 
 on property:init.svc.recovery=running
     start fixyear
 
 service vendor /sbin/sh /sbin/vendor.sh
-	oneshot
-	disabled
-	user root
-	group root
-	seclabel u:r:recovery:s0
+    oneshot
+    disabled
+    user root
+    group root
+    seclabel u:r:recovery:s0
 
 service qseecom /sbin/sh /sbin/qseecom.sh
-	disabled
-	user root
-	group root
-	seclabel u:r:recovery:s0
+    oneshot
+    disabled
+    user root
+    group root
+    seclabel u:r:recovery:s0
 
 service fixyear /sbin/sh /sbin/fixyear.sh
     oneshot
@@ -43,5 +45,3 @@ service fixyear /sbin/sh /sbin/fixyear.sh
     user root
     group root
     seclabel u:r:recovery:s0
-
-
