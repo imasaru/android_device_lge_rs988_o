@@ -5,9 +5,6 @@ on boot
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
 
-    chmod 0750 /vendor.sh
-    start vendor
-
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
@@ -24,13 +21,6 @@ on property:ro.crypto.state=encrypted
 
 on property:init.svc.recovery=running
     start fixyear
-
-service vendor /sbin/sh /sbin/vendor.sh
-    oneshot
-    disabled
-    user root
-    group root
-    seclabel u:r:recovery:s0
 
 service qseecom /sbin/sh /sbin/qseecom.sh
     oneshot
