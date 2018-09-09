@@ -1,4 +1,4 @@
-#!/sbin/ash
+#!/sbin/sh
 while [ "$(getprop ro.crypto.fs_crypto_blkdev)" != "/dev/block/dm-0" ]; do
 if [ ! -d /system/etc ]; then #mount system if not already mounted
     mount /system -o ro
@@ -39,5 +39,5 @@ fi
 if [ -d /system/etc ]; then
 umount /system
 fi
-exec /sbin/ash /qseecom.sh
+exec /sbin/sh /qseecom.sh
 done
